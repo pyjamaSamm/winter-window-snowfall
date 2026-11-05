@@ -40,12 +40,12 @@ function activate(context) {
 		<button id="clear" type="button">Clear snow</button>
 		<button id="sync" type="button" aria-pressed="false">Sync with typing: Off</button>
 		<button id="tree" type="button" aria-label="Drop a Christmas tree" title="Drop a Christmas tree">
-		<svg width="18" height="20" viewBox="0 0 18 20" aria-hidden="true">
-			<path fill="#4ada44" d="M0 1 2 2.3-1.5 1.4-4 2-4.5 3.5-6 3.8-5 5.5-6.5 6.2-5 7.8-6 8.5-4.5 10-5 10.8-3.5 12-4 13.5-2.5 14-3 15.8-1.5 16-2 18.1-0.4 19-0.9 19.9 0.4l0.4 0.9-1.5 1.4-4 0.5-0.5 1.5L0 20h18l-0.5-1.5-4-0.5-1.5-1.4 0.4-0.9 0.4-0.9L16 16l-1.5-1.8L15 14l1.5-0.5L14 12l0.5-1.5-1.5-1.5L13 9l1.5-1.5-1-1.5L11 6l1-1.5L10 3.5l1-1.5L8 2l0.4-1.5-0.5-0.5-0.5-1L6 2.3 8 2Z"/>
-			<path fill="#b4dec1" d="M0 4-4 5h2l-4 5h3l-4 4h14l-4-4h3l-4-5h2z"/>
-			<path fill="#e5c5a8" d="M8 17h2v3H8"/>
-			<circle fill="#ff9daa" cx="6" cy="14" r="1"/>
-			<circle fill="#8acdea" cx="10" cy="14" r="1"/>
+		<svg width="18" height="20" viewBox="0 0 18 20" role="img" aria-hidden="true">
+			<path fill="#4ada44" d="M9 1 4 7h2.6L3 12h3.4v3H5v2h8v-2h-1.4v-3H15l-3.6-5H14L9 1Z"/>
+			<path fill="#e5c5a8" d="M8 15h2v4H8z"/>
+			<circle fill="#ff9daa" cx="7" cy="9" r="0.8"/>
+			<circle fill="#8acdea" cx="11" cy="12" r="0.8"/>
+			<circle fill="#fff0a6" cx="9" cy="6" r="0.8"/>
 		</svg>
 	</button>
 	</div>

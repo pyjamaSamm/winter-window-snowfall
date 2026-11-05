@@ -9,7 +9,7 @@
   const status = document.getElementById('status');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const saved = vscode.getState();
-  let paused = true;
+  let paused = Boolean(saved && saved.paused);
   let synced = Boolean(saved && saved.synced);
   let visible = true;
   let frame;
@@ -226,13 +226,13 @@
 
   pause.addEventListener('click', () => {
     paused = !paused;
-    vscode.setState({ synced });
+    vscode.setState({ paused, synced });
     updatePlayback();
   });
 
   sync.addEventListener('click', () => {
     synced = !synced;
-    vscode.setState({ synced });
+    vscode.setState({ paused, synced });
     vscode.postMessage({ type: 'syncTyping', enabled: synced });
     updatePlayback();
   });

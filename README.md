@@ -9,7 +9,7 @@ Bonus for Christmas: Drop a decorated Christmas tree to add that festive winter 
 ## Features
 
 - A custom **Snowfall** sidebar with drifting flakes and accumulating snow.
-- Snow starts paused. **Resume** starts it; **Pause** freezes flakes in place.
+- Snow starts automatically. **Pause** freezes flakes in place; **Resume** starts it again.
 - **Clear snow** clears the gathered ground snow without moving airborne flakes or stopping the scene.
 - Optional **Sync with typing** makes snowfall follow your editing and brings out the northern lights during sustained typing.
 - A decorated Christmas tree you can drop into the scene.
@@ -21,7 +21,7 @@ Bonus for Christmas: Drop a decorated Christmas tree to add that festive winter 
 2. Open **Run and Debug** and choose **Run Snowfall Extension**.
 3. Start debugging. In the Extension Development Host window, select the Snowfall icon in the Activity Bar.
 
-Snow starts paused. Press **Resume** before turning on **Sync with typing**.
+Snow starts automatically. You can turn on **Sync with typing** whenever the scene is active.
 
 Run the project tests with:
 
