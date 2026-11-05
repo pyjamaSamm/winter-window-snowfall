@@ -1,0 +1,72 @@
+{
+  "name": "snowfall-winter",
+  "displayName": "Winter Window: Snowfall",
+  "description": "Watch snow fall while you let your agents do your work. Clear the gathered snow, sync snowfall with your typing, and look out for an aurora.",
+  "version": "0.1.0",
+  "publisher": "local-snowfall",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": ["onView:snowfall.scene"],
+  "scripts": {
+    "test": "node --test"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "snowfall.open",
+        "title": "Snowfall: Open Snow Sidebar"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "snowfall",
+          "title": "Snowfall",
+          "icon": "media/snowflake.svg"
+        }
+      ]
+    },
+    "views": {
+      "snowfall": [
+        {
+          "type": "webview",
+          "id": "snowfall.scene",
+          "name": "Winter Window"
+        }
+      ]
+    },
+    "themes": [
+      {
+        "label": "Snowfall Midnight",
+        "uiTheme": "vs-dark",
+        "path": "./themes/snowfall-midnight.json"
+      }
+    ],
+    "configuration": {
+      "title": "Snowfall",
+      "properties": {
+        "snowfall.density": {
+          "type": "number",
+          "default": 90,
+          "minimum": 10,
+          "maximum": 250,
+          "description": "Number of snowflakes in the sidebar."
+        },
+        "snowfall.speed": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0.2,
+          "maximum": 3,
+          "description": "Snowfall speed multiplier."
+        }
+      }
+    }
+  }
+}
