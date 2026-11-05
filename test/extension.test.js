@@ -86,6 +86,7 @@ test('registers and resolves the Snowfall webview with valid local resources', (
 	assert.match(webview.html, /<button id="clear"/);
 	assert.match(webview.html, /<button id="sync"/);
 	assert.match(webview.html, /<button id="tree"/);
+	assert.match(webview.html, /<svg width="18" height="20" viewBox="0 0 18 20"[\s\S]*?<path fill="#4ada44" d="M9 1 4 7h2\.6/);
 	assert.equal(webview.options.enableScripts, true);
 	assert.ok(context.subscriptions.length > 0);
 

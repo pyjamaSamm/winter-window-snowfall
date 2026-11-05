@@ -77,15 +77,13 @@ function airborneFlakes(arcs) {
 	return arcs.slice(moonIndex + 1).filter(([, y, radius]) => radius >= 1 && radius <= 3 && y > 0 && y < 240);
 }
 
-test('webview boots paused even if a previous run saved snowfall as active', () => {
+test('webview starts snowing unless a paused state was explicitly saved', () => {
 	const panel = loadPanel({ paused: false, synced: false });
-	assert.equal(panel.frames.size, 0, 'snowfall should be stopped by default');
-	assert.equal(panel.elements.get('pause').textContent, 'Resume');
-	assert.equal(panel.elements.get('status').textContent, 'Snowfall paused.');
+	assert.ok(panel.frames.size > 0, 'snowfall should start by default');
+	assert.equal(panel.elements.get('pause').textContent, 'Pause');
+	assert.equal(panel.elements.get('status').textContent, 'Snow is falling.');
 	assert.equal(JSON.stringify(panel.messages.at(-1)), '{"type":"ready","syncTyping":false}');
 
-	assert.doesNotThrow(() => panel.elements.get('pause').listeners.click());
-	assert.ok(panel.frames.size > 0, 'snow animation should schedule another frame');
 	const firstFrame = panel.frames.values().next().value;
 	panel.frames.clear();
 	assert.doesNotThrow(() => firstFrame(16));
@@ -115,24 +113,33 @@ test('webview boots paused even if a previous run saved snowfall as active', () 
 	assert.ok(panel.frames.size > 0, 'editor typing should start synchronized snow');
 });
 
+test('an explicitly saved paused state stays stopped until resumed', () => {
+	const panel = loadPanel({ paused: true, synced: false });
+	assert.equal(panel.frames.size, 0);
+	assert.equal(panel.elements.get('pause').textContent, 'Resume');
+	panel.elements.get('pause').listeners.click();
+	assert.ok(panel.frames.size > 0);
+});
+
 test('clearing ground snow does not pause active snowfall', () => {
 	const panel = loadPanel();
-	panel.elements.get('pause').listeners.click();
 	assert.ok(panel.frames.size > 0);
 	panel.elements.get('clear').listeners.click();
 	assert.ok(panel.frames.size > 0, 'clear should leave the active animation scheduled');
 	assert.equal(panel.elements.get('pause').textContent, 'Pause');
 });
 
-test('tree button starts its animation and handles reduced-motion scenes', () => {
+test('tree button draws decorations and resumes animation after pause', () => {
 	const panel = loadPanel();
 	assert.doesNotThrow(() => panel.elements.get('tree').listeners.click());
-	assert.equal(panel.frames.size, 0, 'trees added while stopped should remain still');
+	assert.ok(panel.frames.size > 0, 'a tree should animate while snowfall is active');
 	for (const color of ['#fff0a6', '#ff7896', '#78d9f2', '#d4a6ff', '#fffe6a']) {
 		assert.ok(panel.drawnStyles.includes(color), `decorated tree should draw ${color}`);
 	}
 	assert.doesNotThrow(() => panel.elements.get('clear').listeners.click());
 	assert.doesNotThrow(() => panel.elements.get('pause').listeners.click());
 	assert.doesNotThrow(() => panel.elements.get('tree').listeners.click());
+	assert.equal(panel.frames.size, 0, 'a tree added while paused should stay still');
+	assert.doesNotThrow(() => panel.elements.get('pause').listeners.click());
 	assert.ok(panel.frames.size > 0, 'a falling tree should animate after resume');
 });
