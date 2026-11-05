@@ -6,6 +6,14 @@ Clear the gathered snow and watch it accumulate all over again. Bored watching? 
 
 Bonus for Christmas: Drop a decorated Christmas tree to add that festive winter joy.
 
+## Preview
+
+![Screenshot showing the Snowfall sidebar and its controls](docs/snowfall-sidebar.png)
+
+*14-second demo of the snowfall features:*
+
+![14-second demo showing snowfall, controls, typing sync, aurora, and decorated Christmas trees](docs/snowfall-demo.gif)
+
 ## Features
 
 - A custom **Snowfall** sidebar with drifting flakes and accumulating snow.
