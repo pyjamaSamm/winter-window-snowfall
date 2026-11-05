@@ -44,4 +44,4 @@ To use the theme, open **Preferences: Color Theme** and choose **Snowfall Midnig
 
 ## Requirements and license
 
-Requires VS Code 1.85 or later. Distributed under the MIT License; see [LICENSE](LICENSE).
+Requires VS Code 1.85 or later. Distributed under the MIT License.
